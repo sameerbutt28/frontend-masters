@@ -2,7 +2,7 @@ import { useState } from "react";
 // let counter= 0;
 const SearchParams = () => {
     // counter++
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState("Gujar khan");
   return (
     //everytime we clicking on it renders everything again and again and we can seee through the counter
     <div className="search-params">
