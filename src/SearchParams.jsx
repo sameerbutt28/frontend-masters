@@ -1,12 +1,12 @@
 import { useState } from "react";
-let counter= 0;
+// let counter= 0;
 const SearchParams = () => {
-    counter++
+    // counter++
   const [location, setLocation] = useState("");
   return (
     //everytime we clicking on it renders everything again and again and we can seee through the counter
     <div className="search-params">
-        <h2>{counter}</h2>
+        {/* <h2>{counter}</h2> */}
       <form>
         <label htmlFor="location">Location</label>
         <input
