@@ -1,5 +1,4 @@
-import Pet from "./Pet";
-import  { createRoot }  from "react-dom";
+import  { createRoot }  from "react-dom/client";
 import SearchParams from "./SearchParams";
 
   
