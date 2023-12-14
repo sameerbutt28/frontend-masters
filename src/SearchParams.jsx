@@ -32,7 +32,7 @@ const SearchParams = () => {
         }
         >
           <option />
-
+// here the blank option shows that you can select the black option from th option bar
           {ANIMALS.map((animal) => {
             return <option key={animal}>{animal}</option>;
           })}
