@@ -19,7 +19,8 @@ const SearchParams = () => {
           id="location"
           value={location}
           placeholder="location"
-        />
+        /> 
+         //onchange
         <label htmlFor="animal">Animal</label>
         <select
           id="animal"
