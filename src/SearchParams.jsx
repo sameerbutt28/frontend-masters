@@ -32,7 +32,6 @@ const SearchParams = () => {
         }
         >
           <option />
-          <option />
 
           {ANIMALS.map((animal) => {
             return <option key={animal}>{animal}</option>;
