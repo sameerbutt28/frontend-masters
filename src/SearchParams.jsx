@@ -32,7 +32,7 @@ const SearchParams = () => {
         }
         >
           <option />
-// here the blank option shows that you can select the black option from th option bar
+              {/* here the blank option shows that you can select the black option from th option bar */}
           {ANIMALS.map((animal) => {
             return <option key={animal}>{animal}</option>;
           })}
@@ -40,6 +40,7 @@ const SearchParams = () => {
         <label htmlFor="breed">Breed</label>
         <select
           id="breed"
+          //if length === zero if there is no item in the array then the option willl be disabled 
           disabled = {BREEDS.length === 0}
           value={breed}
           onChange={(e) => setBreed(e.target.value)}
