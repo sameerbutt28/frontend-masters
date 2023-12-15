@@ -1,9 +1,9 @@
 import  { createRoot }  from "react-dom/client";
 import SearchParams from "./SearchParams";
 
-  
+  // app.js
   const App = () => {   
-  return (   
+  return (    
     <div>     
       <h1>Adopt Me!</h1>
       <SearchParams /> 
