@@ -26,7 +26,7 @@ const SearchParams = () => {
           value={animal}
           onChange={(e) =>{
             setAnimal(e.target.value)
-                  setBreed("");
+                  setBreed(""); //this set breed shows that wheneever onchage happens in the animal then the breed will be set to empty string
           } 
 
         }
