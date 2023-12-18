@@ -12,7 +12,7 @@ const SearchParams = () => {
   useEffect(()=>
   {
     requestPets();
-  }, [animal]) // the term in the use effect array shows whenever the animal changes the useeffect will render the functon like everytime the animal option changes the requestPet() will be rendered.
+  }, []) // the term in the use effect array shows whenever the animal changes the useeffect will render the functon like everytime the animal option changes the requestPet() will be rendered.
   const requestPets = async()=>
   {
 const res = await fetch(
@@ -25,7 +25,13 @@ setPets(json.pets);
     //everytime we clicking on it renders everything again and again and we can seee through the counter
     <div className="search-params">
       {/* <h2>{counter}</h2> */}
-      <form>
+      <form onSubmit={
+        (e) =>
+        {
+          e.preventDefault();
+          requestPets();
+        }
+      }>
         <label htmlFor="location">Location</label>
         <input
           onChange={(e) => setLocation(e.target.value)
