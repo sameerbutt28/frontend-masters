@@ -7,7 +7,7 @@ export default function useBreed(animal)
     const [status, setStatus] = useState("unloaded");
     useEffect(()=>
     {   
-        if(!animal)
+        if(!animal) 
         {
             setBreedList([])
         }
