@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Pet from "./Pet"
 const ANIMALS = ["cat", "dog", "horse", "eligator", "dinosour"];
-const BREEDS = ["poodle"];
+const BREEDS = [];
 // let counter= 0;
 const SearchParams = () => {
   // counter++
