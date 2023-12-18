@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Pet from "./Pet"
 const ANIMALS = ["cat", "dog", "horse", "eligator", "dinosour"];
 const BREEDS = ["poodle"];
 // let counter= 0;
@@ -7,6 +8,19 @@ const SearchParams = () => {
   const [location, setLocation] = useState("Gujar khan");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
+  const [pets, setPets] = useState([]);
+  useEffect(()=>
+  {
+    requestPets();
+  }, [animal]) // the term in the use effect array shows whenever the animal changes the useeffect will render the functon like everytime the animal option changes the requestPet() will be rendered.
+  const requestPets = async()=>
+  {
+const res = await fetch(
+  `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+);
+const json= await res.json();
+setPets(json.pets);
+  }
   return (
     //everytime we clicking on it renders everything again and again and we can seee through the counter
     <div className="search-params">
@@ -53,7 +67,17 @@ const SearchParams = () => {
 
         <button>Submit</button>
       </form>
-    </div>
+    {  pets.map(pet =>
+      (
+<Pet 
+name={pet.name} 
+breed={pet.breed} 
+animal={pet.animal}
+key={pet.id}
+/>
+      )
+      )}
+    </div> 
   );
 };
 //everytime an event happens the react render everything on the page from top to bottom
