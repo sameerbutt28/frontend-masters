@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Pet from "./Pet"
-import useBreedList from "./useBreed"
+import useBreedList from "./useBreed";
+import Results from "./Results";
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 // let counter= 0;
 const SearchParams = () => {
@@ -8,53 +8,47 @@ const SearchParams = () => {
   const [location, setLocation] = useState("Gujar khan");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
-  const [pets, setPets] = useState([]); 
+  const [pets, setPets] = useState([]);
   const BREEDS = useBreedList(animal);
 
-  useEffect(()=>
-  {
+  useEffect(() => {
     requestPets();
-  }, [animal]) // the term in the use effect array shows whenever the animal changes the useeffect will render the functon like everytime the animal option changes the requestPet() will be rendered.
-  const requestPets = async()=>
-  {
-const res = await fetch(
-  `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
-);
-const json= await res.json();
-setPets(json.pets);
-  }
+  }, [animal]); // the term in the use effect array shows whenever the animal changes the useeffect will render the functon like everytime the animal option changes the requestPet() will be rendered.
+  const requestPets = async () => {
+    const res = await fetch(
+      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+    );
+    const json = await res.json();
+    setPets(json.pets);
+  };
   return (
     //everytime we clicking on it renders everything again and again and we can seee through the counter
     <div className="search-params">
       {/* <h2>{counter}</h2> */}
-      <form onSubmit={
-        (e) =>
-        {
+      <form
+        onSubmit={(e) => {
           e.preventDefault();
           requestPets();
-        }
-      }>
+        }}
+      >
         <label htmlFor="location">Location</label>
         <input
-          onChange={(e) => setLocation(e.target.value)
-        }
+          onChange={(e) => setLocation(e.target.value)}
           id="location"
           value={location}
           placeholder="location"
-        /> 
+        />
         <label htmlFor="animal">Animal</label>
         <select
           id="animal"
           value={animal}
-          onChange={(e) =>{
-            setAnimal(e.target.value)
-                  setBreed(""); //this set breed shows that wheneever onchage happens in the animal then the breed will be set to empty string
-          } 
-
-        }
-        >              
+          onChange={(e) => {
+            setAnimal(e.target.value);
+            setBreed(""); //this set breed shows that wheneever onchage happens in the animal then the breed will be set to empty string
+          }}
+        >
           <option />
-              {/* here the blank option shows that you can select the black option from th option bar */}
+          {/* here the blank option shows that you can select the black option from th option bar */}
           {ANIMALS.map((animal) => {
             return <option key={animal}>{animal}</option>;
           })}
@@ -62,8 +56,8 @@ setPets(json.pets);
         <label htmlFor="breed">Breed</label>
         <select
           id="breed"
-          //if length === zero if there is no item in the array then the option willl be disabled 
-          disabled = {BREEDS.length === 0}
+          //if length === zero if there is no item in the array then the option willl be disabled
+          disabled={BREEDS.length === 0}
           value={breed}
           onChange={(e) => setBreed(e.target.value)}
         >
@@ -75,8 +69,8 @@ setPets(json.pets);
 
         <button>Submit</button>
       </form>
-  <Pets />
-    </div> 
+      <Results pets={pets} />
+    </div>
   );
 };
 //everytime an event happens the react render everything on the page from top to bottom
