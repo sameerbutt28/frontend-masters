@@ -75,17 +75,7 @@ setPets(json.pets);
 
         <button>Submit</button>
       </form>
-    {  pets.map(pet =>
-      (
-<Pet 
-name={pet.name} 
-breed={pet.breed} 
-animal={pet.animal}
-key={pet.id}
-//if we comment all these then it will not be going to show all the pets and their specifications besdie the search form 
-/>
-      )
-      )}
+  <Pets />
     </div> 
   );
 };
