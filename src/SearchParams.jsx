@@ -14,7 +14,7 @@ const SearchParams = () => {
   useEffect(()=>
   {
     requestPets();
-  }, []) // the term in the use effect array shows whenever the animal changes the useeffect will render the functon like everytime the animal option changes the requestPet() will be rendered.
+  }, [animal]) // the term in the use effect array shows whenever the animal changes the useeffect will render the functon like everytime the animal option changes the requestPet() will be rendered.
   const requestPets = async()=>
   {
 const res = await fetch(
@@ -82,6 +82,7 @@ name={pet.name}
 breed={pet.breed} 
 animal={pet.animal}
 key={pet.id}
+//if we comment all these then it will not be going to show all the pets and their specifications besdie the search form 
 />
       )
       )}
