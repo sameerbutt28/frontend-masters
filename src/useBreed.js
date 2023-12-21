@@ -30,7 +30,7 @@ export default function useBreed(animal)
             setStatus("loaded");
         }
     },[animal] );
-    return [breedList, status]
+    return [breedList]
 
 
 }
