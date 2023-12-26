@@ -7,7 +7,7 @@ const Results = ({ pets }) => {
         <h1>No Pets found.</h1>
       ) : (
         pets.map((pet) => {
-          <Pet
+          <Pet  
             animal={pet.animal}
             name={pet.name}
             breed={pet.breed}
