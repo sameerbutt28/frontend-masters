@@ -9,7 +9,8 @@ const App = () => {
 
     <BrowserRouter>
     <header>
-    <Link to="/">Adopt Me!</Link>
+    <Link to="/">Adopt Me!</Link> 
+    {/* header must be in the browser router */}
     </header>
       <div>
         <Routes>
