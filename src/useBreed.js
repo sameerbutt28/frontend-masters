@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+// react query will handle all the api requests for you 
 const localCache= {};
 export default function useBreed(animal) 
 {             
