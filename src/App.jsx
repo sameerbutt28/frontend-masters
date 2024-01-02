@@ -7,7 +7,7 @@ import Details from "./Details";
  //react query cache is stored in memory 
 //  const QueryClient
 const App = () => {
-  return ( 
+  return (   
 
     <BrowserRouter>
     <header>
