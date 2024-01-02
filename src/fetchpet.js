@@ -1,4 +1,5 @@
 // Asyn function always return promises
+//this is the fetch method ready to be used queryclient
 const fetchPet = async ({ queryKey }) => {
     const id= queryKey[1];
     const apiRes = await fetch(`http://pets-v2.dev-apis.com/pets?id=${id}`)
