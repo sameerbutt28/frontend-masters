@@ -20,7 +20,7 @@ const QueryClient = new QueryClient({
 const App = () => {
   return (
      <BrowserRouter>
-      {/* here the browerRouter and QueryClientProvider are basically wrapping components. They mainly o not display any kind of stuff. */}
+      {/* here the browerRouter and QueryClientProvider are basically wrapping components. They mainly o not display any kind of stuff. it only provides context  */}
     <QueryClientProvider client={QueryClient} />
       <header>
         <Link to="/">Adopt Me!</Link>
