@@ -11,3 +11,4 @@ const fetchPet = async ({ queryKey }) => {
 
 }; 
 export default fetchPet;
+// if u call it and it give a corect query key it gonna give u back the correct response if there will be any kind of error it will going to give us the error message.
