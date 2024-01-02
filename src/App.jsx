@@ -9,7 +9,7 @@ import Details from "./Details";
 const App = () => {
   return (   
 
-    <BrowserRouter>
+    <BrowserRouter>  
     <header>
     <Link to="/">Adopt Me!</Link> 
     {/* header must be in the browser router */}
