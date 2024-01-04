@@ -1,36 +1,16 @@
-import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import fetchBreedList from "./fetchBreedList"
 // react query will handle all the api requests for you 
-const localCache= {};
 export default function useBreed(animal) 
 {             
-    const [breedList, setBreedList] = useState([]);
-    const [status, setStatus] = useState("unloaded");
-    useEffect(()=>
-    {    
-        if(!animal) 
-        {
-            setBreedList([])
-        }
-        else if (localCache[animal])
-        {
-            setBreedList(localCache[animal])
-        }
-        else{
-            requestBreedList();
-        }
-        async function requestBreedList(){
-            setBreedList([]);
-            setStatus("loading");
-            const res =  await fetch(
-                `http://pets-v2.dev-apis.com/breeds?animal=${animal}`
-            )
-            const json = await res.json();
-            localCache[animal] = json.breeds || []
-            setBreedList(localCache[animal]);
-            setStatus("loaded");
-        }
-    },[animal] );
-    return [breedList]
+   
+const results = useQuery(["breeds", animal], fetchBreedList);
+return [
+    // If results, results.data, or results.data.breeds is null or undefined at any point in this chain, JavaScript will stop evaluating and return undefined immediately, instead of throwing a TypeError (as it would without optional chaining).
+    results?.data?.breeds??[], results.status
+];
+// Nullish Coalescing Operator (??):
 
+// This operator is used to provide a default value if the value on its left-hand side is null or undefined.
 
 }

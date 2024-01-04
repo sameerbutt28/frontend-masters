@@ -5,7 +5,7 @@ const Pet = ({ name, animal, breed, images, location, id }) => {
   if (images.length) { 
     hero = images[0];
   }
-
+ //helo 
   return (
     <Link to={`/details/${id}`} className="pet">
       <div className="image-container">
