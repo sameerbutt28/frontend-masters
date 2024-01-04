@@ -5,7 +5,7 @@ import Results from "./Results"; // Ensure this path is correct
 import fetchSearch from "./fetchSearch";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
-
+ 
 const SearchParams = () => {
   const [requestParams, setRequestParams]= useState(
     { 
