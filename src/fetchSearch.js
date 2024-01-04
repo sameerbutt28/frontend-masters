@@ -4,7 +4,7 @@ async function fetchSearch({ queryKey }) {
   const res = await fetch(
     `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breeds=${breed}`
   );
-  if (res.ok) {
+  if (!res.ok) {
     throw new Error(
       `pet search was not ok for ${animal}, ${location}, ${breed}`
     );
