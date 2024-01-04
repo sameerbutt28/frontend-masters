@@ -1,15 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useQueries } from "@tanstack/react-query";
 import useBreedList from "./useBreed"; // Ensur this path is correct
 import Results from "./Results"; // Ensure this path is correct
+import fetchSearch from "./fetchSearch";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
-  const [location, setLocation] = useState("Seattle, WA"); // Default location
   const [animal, setAnimal] = useState("");
-  const [breed, setBreed] = useState("");
   const [pets, setPets] = useState([]);
-  const [error, setError] = useState(null);
   const [breeds] = useBreedList(animal);
 
   useEffect(() => {
