@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useQueries } from "@tanstack/react-query";
+import { useQueries, useQuery } from "@tanstack/react-query";
 import useBreedList from "./useBreed"; // Ensur this path is correct
 import Results from "./Results"; // Ensure this path is correct
 import fetchSearch from "./fetchSearch";
@@ -7,28 +7,19 @@ import fetchSearch from "./fetchSearch";
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
+  const [requestParams, setRequestParams]= useState(
+    {
+      location:"",
+      animal:"",
+      breed:"",
+    }
+  )
   const [animal, setAnimal] = useState("");
   const [pets, setPets] = useState([]);
   const [breeds] = useBreedList(animal);
 
-  useEffect(() => {
-    requestPets();
-  }, [animal, location, breed]); // Fetch pets whenever these states change
-
-  async function requestPets() {
-    try {
-      const res = await fetch(
-        `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
-      );
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-      }
-      const json = await res.json();
-      setPets(json.pets);
-    } catch (e) {
-      setError(e.message);
-    }
-  }
+ const results = useQuery(["search", requestParams ], fetchSearch);
+ const pets = results?.data?.pets ?? [];
 
   return (
     <div className="search-params">
